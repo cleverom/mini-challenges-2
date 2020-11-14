@@ -56,8 +56,20 @@ const MORSE_CODE = {
   "...---...": "SOS",
 };
 
-Object.freeze(MORSE_CODE);
+//Object.freeze(MORSE_CODE);
 
-function morse(text) {}
+function morse(text) {
+  var phrase = [];
+  text.trim();
+  var words = text.split("   ");
+  for (var i = 0; i < words.length; i++) {
+    var letters = words[i].split(" ");
+    for (var j = 0; j < letters.length; j++) {
+      letters[j] = MORSE_CODE[letters[j]];
+    }
+    phrase.push(letters.join(""));
+  }
+  return phrase.join(" ").trim();
+}
 
 module.exports = morse;
